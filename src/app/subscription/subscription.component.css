@@ -1,0 +1,14 @@
+mat-card {
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    display: inline-block;
+}
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

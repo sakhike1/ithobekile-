@@ -1,0 +1,30 @@
+
+
+@for(option of options; track option) {
+  <mat-card class="example-card">
+      @if(option.best) {
+        <div class="best">
+          <h1>Best</h1>
+        </div>
+      }
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{option.title}}</mat-card-title>
+        <mat-card-subtitle><h1>{{option.amount_description}}</h1></mat-card-subtitle>
+        <mat-card-subtitle><h2>{{ option.duration }}</h2></mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <mat-card-content>
+        <!-- <p> -->
+          <ul>
+            @for(feature of option.features; track feature) {
+              <li>{{feature}}</li>
+            }
+          </ul>
+        <!-- </p> -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="warn" [style.width]="'100%'" (click)="sendSubscriptionChoice(option)">{{option.button}}</button>
+      </mat-card-actions>
+    </mat-card>
+}

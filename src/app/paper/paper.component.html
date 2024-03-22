@@ -1,0 +1,36 @@
+
+<mat-toolbar class="nav">
+  <span>
+    @if(paper) {
+      {{ paper.subject_id +  ' '+ paper.paper_no + ' ' + paper.published_month + ' ' + paper.published_year}} <br>
+      {{ paper.source}}
+    }
+    @else {
+      loading...
+    }
+
+  </span>
+  <span class="example-spacer"></span>
+
+  <mat-form-field>
+    <mat-label>Select Question</mat-label>
+    <mat-select #jumper (valueChange)="scrollToElement(jumper.value)">
+        @for (question of questions; track question) {
+            <mat-option [value]="question.id"><a (click)="scrollToElement(question.id ?? '')" >Q - {{ question | questionNumber }}</a></mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+</mat-toolbar>
+
+<section>
+  <!-- <div [ngStyle.gt-sm]="{ margin: '10px 20vw' }"> -->
+    <!-- <mat-card> -->
+      <!-- <mat-card-content> -->
+        @for(question of questions; track question; let i = $index){
+          <br><br>
+          <app-view-question [attr.id]="question.id + '-pv'" [question]="question" (click)="openQuestion(question)"></app-view-question>
+        }
+        <!-- </mat-card-content> -->
+    <!-- </mat-card> -->
+  <!-- </div> -->
+</section>

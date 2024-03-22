@@ -1,0 +1,35 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <h1>Ithobekile Sign in</h1>
+    
+    <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+    
+    <!-- <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+    </mat-form-field> -->
+    
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+  
+    
+    <div>
+        <button mat-button type="submit" [disabled]="!form.valid">Sign in</button>
+        <br>
+    </div>
+
+    <div>
+        <button mat-button color="warn" type="submit" [routerLink]="['/register']" routerLinkActive="router-link-active" >Go register</button>
+    </div>
+    
+    @if (error !== '') {
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    }
+      
+</form>

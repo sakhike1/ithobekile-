@@ -1,0 +1,29 @@
+section {
+    margin: 10px 3vw;
+}
+.subClass {
+    margin-left: 20px;
+    padding: 5px
+}
+.mainClass {
+    padding: 5px
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.wrap{
+    display:flex;
+}
+.nav {
+    position: fixed;
+    /* position: -webkit-sticky; */
+    top: 0; /* required */
+    z-index: 1000;
+    width: 100%;
+    background-color: white;
+    left: 0;
+    right: 0;
+}
+  

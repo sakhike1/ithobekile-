@@ -1,0 +1,48 @@
+<div #questionDiv></div>
+@if(isModal && loading) {
+  <button
+  style="margin-left: 40px"
+  mat-stroked-button
+    color="primary"
+  >
+  <mat-spinner></mat-spinner>
+  </button>
+}
+
+@else if(question.answer) {
+<button
+mat-stroked-button
+  color="primary"
+  (click)="$event.stopPropagation();hideShowAnswer()"
+>
+  {{ !showAnswer ? "Show Answer" : "Hide Answer" }}
+</button>
+
+@if(isModal) {
+  <button
+  mat-stroked-button
+  color="accent"
+  (click)="$event.stopPropagation(); sendWhatApp()"
+  >
+  Whatsapp Help
+  </button>
+
+  <!-- <app-comment-section [question_id]="question.id ?? ''"></app-comment-section> -->
+}
+@else {
+  <button
+mat-stroked-button
+color="warn"
+(click)="$event.stopPropagation(); hideShowVideo()"
+>
+{{ !showVideo ? "Show Video" : "Close Video" }}
+</button>
+}
+}
+
+<div #answerDiv [hidden]="!showAnswer"></div>
+
+@if (showVideo) {
+  <br>
+  <app-video-player [videoSrc]="'https://wcedonline.s3.af-south-1.amazonaws.com/Video-storage/' + question.id + '.mp4'"></app-video-player>
+}

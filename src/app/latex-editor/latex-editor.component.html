@@ -1,0 +1,82 @@
+<div class="container" layout="row" layout-align="center center" (keydown)="handleSavingHotKey($event)">
+    <!-- Center all cards -->
+<mat-card class="card" [attr.id]="question.id">
+    @if (question.loading) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <strong>{{message}}</strong>
+    }
+
+    <mat-card-header>
+        <mat-card-title>Question {{ this.question.question_no + ': ' + this.question.label }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-button color="warn" (click)="openDeleteDialog()">
+            <mat-icon>delete</mat-icon>
+            Delete
+        </button>
+
+        <button mat-button type="submit" (click)="sendSaveQuestionEvent()">
+            <mat-icon>save</mat-icon>
+            Save
+        </button>
+
+        <button mat-button color="primary" (click)="sendDuplicateQuestionEvent()">
+            <mat-icon>file_copy</mat-icon>
+            Duplicate
+        </button>
+
+        <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <app-expansion-panel [expanded]="selected === 1" (click)="setSelected(1)" panelTitle="Metadata" panelDescription="Question information">
+            <table cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Question Type</mat-label>
+                            <mat-select placeholder="Question Type" [(ngModel)]="question.question_type" formControlName="question_type">
+                                @for (questionTypeOption of questionTypeOptions; track questionTypeOption) {
+                                <mat-option value="{{questionTypeOption.value}}">{{questionTypeOption.viewValue}}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Question number</mat-label>
+                            <input #question_number matInput placeholder="1.1" formControlName="question_no" [(ngModel)]="question.question_no">
+                            </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Label</mat-label>
+                            <input matInput placeholder="1.1" formControlName="label" [(ngModel)]="question.label">
+                        </mat-form-field>
+                    </td>
+        
+                    <td [hidden]="question.question_type === 'mainquestion'" >
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Marks</mat-label>
+                            <input #question_mark [(ngModel)]="question.marks" matInput placeholder="2" type="number" formControlName="marks">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            </app-expansion-panel>
+
+            <app-expansion-panel [expanded]="selected === 2" (click)="setSelected(2)" panelTitle="Content" panelDescription="Edit content">
+                <app-latex-preview [title]="'Question ' + question.question_no + ' - ' + question.label" [content]="question.answer" [content]="question.content" (sendContentEvent)="onContentChange($event)"></app-latex-preview>
+            </app-expansion-panel>
+            
+            <app-expansion-panel [disabled]="question.question_type === 'mainquestion'" [expanded]="question.question_type !== 'mainquestion' && selected === 3" (click)="setSelected(3)" panelTitle="Answer" [panelDescription]="question.question_type === 'mainquestion' ? 'No answer for main question' : 'Change Answer'">
+                <app-latex-preview [extraContentTitle]="'Question ' + question.question_no + ' - ' + question.label" [title]="'Answer ' + question.question_no + ' - ' + question.label" [extraContent]="question.content" [content]="question.answer" (sendContentEvent)="onAnswerChange($event)"></app-latex-preview>
+            </app-expansion-panel>
+
+        </form>
+    </mat-card-content>
+    
+</mat-card>
+</div>

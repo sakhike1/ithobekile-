@@ -1,0 +1,17 @@
+<mat-accordion class="headers-align expansion-panel">
+    <mat-expansion-panel [expanded]="expanded" [disabled]="disabled">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ panelTitle }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ panelDescription }}
+
+                @if (panelDescriptionIcon !== '') {
+                    <mat-icon>{{ panelDescriptionIcon }}</mat-icon>
+                }
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-content #name></ng-content>
+    </mat-expansion-panel>
+</mat-accordion>

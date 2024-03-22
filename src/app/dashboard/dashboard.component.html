@@ -1,0 +1,144 @@
+<div class="grid-container">
+  <h1 class="mat-h1"> {{ subjectData.subject }}</h1>
+
+  <app-active-conversation></app-active-conversation>
+  
+  <div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Grade {{ subjectData.grade }} </mat-card-title>
+        <mat-card-subtitle> 2024 - CAPS</mat-card-subtitle>
+<!-- {{new Date().now}} -->
+        <a  routerLink="/subject/{{subjectData.subject}}/{{subjectData.grade}}" >
+          <div class="pagination">
+
+            <div href="#">Go to Past Papers!</div>
+            
+          </div>
+        </a>
+        <mat-card-title>
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Expand</button>
+            <button mat-menu-item>Remove</button>
+          </mat-menu>
+        </mat-card-title>
+      </mat-card-header>
+      <br>
+      <mat-card-content>
+          <mat-form-field>
+            <mat-label>Term</mat-label>
+            <mat-select [(value)]="selectedTerm">
+              @for (data of schoolWeekData; track data) {
+                <mat-option [value]="data"> {{data.term}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <!-- @if (selectedTerm.title && selectedTerm.title !== "") {
+            <h2>{{selectedTerm.title}}</h2>
+          } -->
+        
+        @if (selectedTerm) {
+          <div class="center">
+            <div class="pagination">
+              <div href="#">&laquo;</div>
+                @for (week of selectedTerm.weeks; track week) {
+                  <div href="#" (click)="selectWeek(week)" [classList]="[selectedWeek == week ? 'active' : '']">{{week.label}}</div>
+                }
+              <div href="#">&raquo;</div>
+          </div>
+          </div>
+
+          <div>
+            <!-- Let's display useful week information -->
+            
+            @if (selectedWeek) {
+              <div>
+                <h2>{{selectedWeek.label}}</h2>
+                <div>
+                  <div>
+                    <h3>{{ selectedWeek.topics[0] }}</h3>
+                    @if (selectedWeek.SBA && selectedWeek.SBA.length > 0) {
+                      <ul>
+                        @for (sba of selectedWeek.SBA; track sba) {
+                          <!-- <li>{{sba}}</li> -->
+                          <app-view-question [question]="{content: sba, answer: '', class: '', showAnswer: false}"></app-view-question>
+                        }
+                      </ul>
+                    }
+                    @else {
+                      <div>
+                        No SBA
+                      </div>
+                    }
+                  </div>
+                  <div>
+                    <h3>Related Questions</h3>
+                    @if (selectedWeek.topics && selectedWeek.topics.length > 0) {
+                      <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+                        <ng-container matColumnDef="Paper">
+                          <th mat-header-cell *matHeaderCellDef> Paper</th>
+                          <td mat-cell *matCellDef="let element"> {{element.published_month}} {{element.published_year}} {{element.paper_no}} </td>
+                        </ng-container>
+              
+                        <ng-container matColumnDef="QuestionNo">
+                          <th mat-header-cell *matHeaderCellDef> Question # </th>
+                          <td mat-cell *matCellDef="let element"> {{element.question_no}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="Marks">
+                          <th mat-header-cell *matHeaderCellDef> Marks</th>
+                          <td mat-cell *matCellDef="let element"> {{element.marks}} </td>
+                        </ng-container>
+              
+                        <!-- paper_no -->
+                        <ng-container matColumnDef="Duration">
+                          <th mat-header-cell *matHeaderCellDef> Duration (Hours)</th>
+                          <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+                        </ng-container>
+              
+                        <!-- source -->
+                        <ng-container matColumnDef="Topic">
+                          <th mat-header-cell *matHeaderCellDef> Topic</th>
+                          <td mat-cell *matCellDef="let element"> {{element.topic}} </td>
+                        </ng-container>
+              
+                        <!-- practice button -->
+                        <!-- <ng-container matColumnDef="Practice">
+                          <th mat-header-cell *matHeaderCellDef> Practice</th>
+                          <td mat-cell *matCellDef="let element"> 
+                            <button mat-raised-button color="primary">Practice</button>
+                          </td>
+                        </ng-container> -->
+              
+                        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: tableColumns" (click)="check(row)"></tr>
+                      </table>
+                    }
+                    @else {
+                      <div>
+                        Couldn't generated
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+        @else {
+          <div>
+            Nothing selected
+          </div>
+        }
+      </mat-card-content>
+
+    </mat-card>
+
+    
+    
+  </div>
+  
+</div>

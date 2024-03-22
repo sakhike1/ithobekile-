@@ -1,0 +1,169 @@
+<header
+  class="relative overflow-hidden py-4 md:px-12 lg:px-24 lg:py-8 xl:px-36 bg-cyan-400"
+  style="border-radius: 400% / 0 0 100% 100%;"
+>
+  <app-site-nav />
+
+  <div class="relative flex items-center justify-between pb-6">
+    <div class="xl: py-20 text-white md:max-w-xs xl:max-w-lg">
+      <h1 class="font-bold leading-[4rem] md:text-2xl xl:text-3xl">
+        <span class="text-tahiti-gold">Studying</span>
+        Online is now much easier
+      </h1>
+      <p class="mt-4 font-light md:text-xs xl:text-2xl">
+        Revolutionizing Learning with On-Demand Academic Resources, Personalized
+        Tutoring, and AI-Powered WhatsApp Assistance.
+      </p>
+
+      <div class="mt-4 flex items-center justify-between">
+        <button
+          class="rounded-[5rem] transform transition duration-300 hover:scale-110 bg-white border-none bg-opacity-30  px-8 py-3 font-medium md:text-xs xl:text-lg"
+          type="button"
+        >
+          Try it for free
+        </button>
+
+        <button
+          class="flex items-center  border-none justify-center rounded-full bg-white md:size-8 xl:size-14"
+        >
+          <mat-icon
+            class="text-fountain-blue  md:text-xs xl:-mt-1 xl:text-2xl"
+            fontIcon="play_arrow"
+          />
+        </button>
+
+        <p class="text-gray-700 md:text-xs xl:text-2xl">Watch how it works</p>
+      </div>
+    </div>
+
+    <img
+      src="assets/images/hero/hero_f9rh04_c_scale,w_656.png"
+      alt="Hero image"
+      class="w-6/6 lg:my-5 xl:my-20"
+    />
+  </div>
+</header>
+
+<main class="flex flex-col pt-16">
+  
+<section>
+  <!-- Container -->
+  <div class="px-5 py-16 md:px-10 md:py-24 lg:py-32">
+    <!-- Component -->
+    <div class="mx-auto flex w-full max-w-[798px] py-8 text-black">
+        <!-- Facts Div -->
+        <div class="grid h-full w-full grid-cols-2 gap-5 xs:grid-cols-2 md:grid-cols-5 md:gap-0">
+            <!-- Fact Item -->
+            <div class="flex flex-col items-center justify-center lg:border-r-[#c3c0c04d]">
+                <h4 class="mb-0 text-teal-400 text-6xl font-bold md:text-6xl">20<span class="text-2xl text-bg-[#a5f3fc]">K</span>+</h4>
+                <p class="text-xs pb-8">Practise Questions</p>
+            </div>
+            <!-- Fact Item -->
+            <div class="flex flex-col items-center justify-center lg:border-r-[#c3c0c04d]">
+                <h4 class="mb-0 text-teal-400 text-6xl font-bold md:text-6xl">10<span class="text-2xl">K</span>+</h4>
+                <p class="text-xs pb-8">Video Lessons</p>
+            </div>
+            <!-- Fact Item -->
+            <div class="flex flex-col items-center justify-center lg:border-r-[#c3c0c04d]">
+                <h4 class="mb-0 text-teal-400 text-6xl font-bold md:text-6xl">400+</h4>
+                <p class="text-xs pb-8">Past Papers</p>
+            </div>
+            <!-- Fact Item -->
+            <div class="flex flex-col items-center justify-center lg:border-r-[#c3c0c04d]">
+                <h4 class="mb-0 text-teal-400 text-6xl font-bold md:text-6xl">24/7</h4>
+                <p class="text-xs pb-8">Assistance</p>
+            </div>
+            <!-- New Fact Item -->
+            <div class="flex flex-col items-center justify-center lg:border-r-[#c3c0c04d]">
+                <h4 class="mb-0 text-xs text-teal-400 text-6xl font-bold md:text-6xl">9</h4>
+                <p class="text-xs pb-8">Subjects</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<section class="flex flex-col items-center justify-center p-3 -mt-40">
+  <h6 class="mb-2 text-xl font-bold xl:text-4xl">
+    <span class="mr-1 text-lg text-blue-500">All-In-One</span>
+    <span class="text-robins-egg-blue text-lg">Educational Hub</span>
+  </h6>
+  <p
+    class="max-w-xs text-center text-xs font-normal text-storm-gray lg:max-w-md lg:text-lg"
+  >
+    Ithobekile.io is your all-encompassing academic partner, offering a
+    seamless blend of study resources, personalised tutoring, and innovative
+    AI support at your finger tips.
+  </p>
+</section>
+  <section
+    class="flex items-center justify-center p-12 md:px-12 lg:px-24 lg:py-8 xl:px-36 xl:py-16"
+  >
+    @for (feature of features; track feature.title) {
+      <app-landing-page-feature-card
+        class="mx-3 xl:mx-6 2xl:mx-12"
+        [icon]="feature.icon"
+        [iconBgColor]="feature.iconBgColor"
+        [title]="feature.title"
+        [description]="feature.description"
+      />
+    }
+  </section>
+
+  <section class="flex flex-col items-center pb-12">
+    <h6 class="mb-2 text-xl font-bold xl:text-4xl">
+      <span class="mr-1 text-lg text-minsk">What is</span>
+      <span class="text-lg text-robins-egg-blue">Ithobekile.io?</span>
+    </h6>
+    <p
+      class="max-w-lg text-center text-xs font-normal text-storm-gray lg:max-w-2xl lg:text-lg xl:max-w-4xl"
+    >
+      Ithobekile.io is a website that helps students study better. It gives them
+      lots of study materials like notes and videos, lets them ask questions
+      through a WhatsApp chatbot, and even book personal or group tutoring
+      sessions for extra help.
+    </p>
+  </section>
+
+  <section class="mb-2 flex justify-center p-20">
+    <div
+      class="flex basis-2/6 flex-col items-center mb-10 rounded-lg bg-[url('assets/images/bg_try_it_out.png')] bg-cover bg-center py-20"
+      style="width: 300px; height: 300px;" 
+    >
+      <h6 class="text-6xl font-semibold text-white">Try it out</h6>
+
+      <button
+        class="mt-4 w-fit rounded-full border border-white px-6 py-4 font-medium text-white bg-transparent"
+      >
+        Start Free Promo
+      </button>
+    </div>
+
+    <!-- Added margin to create space -->
+    <div
+      class="ml-8 flex basis-2/6 flex-col items-center rounded-lg bg-[url('assets/images/bg_subscribe_today.png')] bg-cover bg-center py-20"
+      style="width: 300px; height: 300px;" 
+    >
+      <h6 class="text-2xl font-semibold text-white">Subscribe Today</h6>
+
+      <button
+        class="mt-4 w-fit rounded-full px-6 py-4 font-medium text-white bg-blue-500 border-none"
+      >
+        Start Free Promo
+      </button>
+    </div>
+</section>
+
+
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-xl px-4 md:px-9">
+    <img src="/assets/images/Group.png" alt="">
+  </div>
+</div>
+
+
+
+</main>
+
+<app-site-footer />

@@ -1,0 +1,21 @@
+<h1>
+    <form (submit)="onQuerySubmit($event)">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput type="text" #search_query (change)="search(search_query.value)" type="text">
+        </mat-form-field>
+    </form>
+</h1>
+
+@if (favoritePapers.length > 0) {
+    <h2>Favorite Papers</h2>
+    @for ( paper of favoritePapers; track paper) {
+        <app-paper-card [displayEditButton]="displayEditButton" class="paper-card" [paper]="paper" [isFavorite]="true" (favoriteClick)="toggleFavoritePaper($event)"></app-paper-card>
+    }
+    <hr>
+}
+
+
+@for ( paper of filterPapers; track paper) {
+    <app-paper-card [displayEditButton]="displayEditButton" class="paper-card" [paper]="paper" (favoriteClick)="toggleFavoritePaper($event)"></app-paper-card>
+}

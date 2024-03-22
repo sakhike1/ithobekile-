@@ -1,0 +1,13 @@
+<!-- <p (click)="refreshQuestions()">paper-view works!</p> -->
+<!-- <button mat-button (click)="test()">Refresh</button> -->
+
+<mat-card>
+    <mat-card-content>
+        <p>
+        @for(question of questions; track question; let i = $index){
+            <br><h3>{{  question.label + (question.mark ? ' ' + question.mark : '')}}</h3>
+            <app-view-question [attr.id]="question.id + '-pv'" [question]="question"></app-view-question>
+        }
+    </p>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,25 @@
+<div
+  class="relative w-52 rounded-2xl pt-16 text-center shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] lg:w-64 xl:w-[20rem]"
+>
+  <div class="absolute -top-8 flex w-full justify-center">
+    <div
+      class="{{
+        iconBgColor + ' flex size-16 items-center justify-center rounded-full'
+      }}"
+    >
+      <mat-icon class="text-white">
+        {{ icon }}
+      </mat-icon>
+    </div>
+  </div>
+
+  <h6 class="px-4 text-center text-lg font-medium text-minsk lg:text-xl xl:text-2xl">
+    {{ title }}
+  </h6>
+  
+  <p
+    class="xl:text-md p-4 text-xs font-normal text-storm-gray lg:p-6 xl:text-sm"
+  >
+    {{ description }}
+  </p>
+</div>

@@ -1,0 +1,15 @@
+.card {
+    background-color: rgba(0, 0, 255, 0.1);
+    border-radius: 0%;
+    margin: 2px;
+}
+
+.card:focus {
+    background-color: aqua;
+}
+
+.spinner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

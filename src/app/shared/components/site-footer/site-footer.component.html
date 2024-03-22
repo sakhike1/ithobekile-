@@ -1,0 +1,28 @@
+<footer
+  class="flex flex-col items-center justify-center bg-ebony-clay md:min-h-60 xl:min-h-96"
+>
+  <div class="flex items-center justify-center">
+    <img
+      src="assets/images/ithobekile_footer_logo.png"
+      class="md:w-4/12"
+      alt="Footer logo"
+    />
+    <p class="ml-6 font-semibold text-white md:text-xs xl:text-sm">
+      Empowring Minds,
+      <br />
+      Unleasing Potential
+    </p>
+  </div>
+
+  <nav class="mb-3 mt-6 font-normal text-logan md:text-xs xl:text-sm">
+    <ul class="flex">
+      <li><a routerLink="/privacy-policy">Privacy Policy</a></li>
+      <li class="w-[0.063rem] bg-commet md:mx-4 xl:mx-6"></li>
+      <li><a routerLink="/terms-and-conditions">Terms &amp; Conditions</a></li>
+    </ul>
+  </nav>
+
+  <p class="font-normal text-logan md:text-xs xl:text-sm">
+    &copy; {{ currentYear | date: "y" }} Ithobekile (PTY) LTD
+  </p>
+</footer>

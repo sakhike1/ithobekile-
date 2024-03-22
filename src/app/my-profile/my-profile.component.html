@@ -1,0 +1,65 @@
+<p>Choose a subscription plan here <button  mat-button color="primary" (click)="toSubscription()">here</button></p>
+
+
+<form aria-disabled="true">
+@if (user) {
+
+        <h1>My Ithobekile Profile</h1>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input disabled matInput formControlName="name" [value]="user.name">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Surname</mat-label>
+            <input disabled matInput formControlName="surname" [value]="user.surname">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Preferred name</mat-label>
+            <input disabled matInput formControlName="preferred_name" [value]="user.preferred_name">
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input disabled matInput formControlName="phone" [value]="user.phone">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input disabled matInput formControlName="email" [value]="user.email">
+        </mat-form-field>
+    
+        <!-- <mat-form-field>
+            <mat-label>Authorities</mat-label>
+            <input matInput>
+        </mat-form-field> -->
+        <mat-form-field>
+            <mat-label>Authorities</mat-label>
+            <mat-select disabled formControlName="authorities" [value]="user.authorities">
+                <mat-option value="user">User</mat-option>
+                <!-- <mat-option value="two">Second option</mat-option> -->
+            </mat-select>
+        </mat-form-field>
+        
+        <!-- 
+        
+        <mat-form-field>
+            <mat-label>Textarea</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field> -->
+        
+        <!-- <mat-form-field> -->
+            <!-- </mat-form-field> -->
+            
+        <div>
+            <button mat-button type="submit" color="warn" (click)="logout()" >Log out</button>
+        </div>
+          
+}
+@else {
+    <p>No user details</p>
+}
+
+
+</form>

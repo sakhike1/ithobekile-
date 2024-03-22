@@ -1,0 +1,37 @@
+<form action=""  [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <button mat-button color="primary" (click)="openDialog()">
+            <!-- icon for image upload -->
+            <mat-icon>image</mat-icon>
+            <!-- Upload Image -->
+        </button>
+    
+        <button mat-button color="primary" (click)="onLatexChange($event)">
+            <!-- icon for image upload -->
+            <mat-icon>refresh</mat-icon>
+            <!-- Upload Image -->
+        </button>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Edit the content</mat-label>
+        <textarea matInput
+        (paste)="onPaste($event)"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        id="content"
+        (input)="onLatexChange(content); sendContent();"
+        formControlName="content"
+        [(ngModel)]="content"
+        #textarea_content
+        matInput
+        placeholder="$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$"></textarea>
+    </mat-form-field>
+
+    <section class="preview-section">
+        <!-- <h1>Preview</h1> -->
+        <div #latex_preview_div >
+        </div>
+    </section>
+</form>

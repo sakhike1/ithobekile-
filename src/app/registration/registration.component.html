@@ -1,0 +1,65 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+    <h1>Ithobekile Registration</h1>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Preferred name</mat-label>
+        <input matInput formControlName="preferred_name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="confirm_password">
+        
+    </mat-form-field>
+    
+    <!-- <mat-form-field>
+        <mat-label>Authorities</mat-label>
+        <input matInput>
+    </mat-form-field> -->
+    <mat-form-field>
+        <mat-label>Authorities</mat-label>
+        <mat-select formControlName="authorities" value="user">
+            <mat-option value="user">User</mat-option>
+            <!-- <mat-option value="two">Second option</mat-option> -->
+        </mat-select>
+    </mat-form-field>
+    
+    <!-- 
+    
+    <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field> -->
+    
+    <!-- <mat-form-field> -->
+        <!-- </mat-form-field> -->
+        
+    <div>
+        <button mat-button type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+      
+</form>

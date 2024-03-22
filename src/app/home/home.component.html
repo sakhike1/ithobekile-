@@ -1,0 +1,37 @@
+<section class="content">
+    <app-active-conversation></app-active-conversation>
+    <h2>Subjects</h2>
+    @if (user) {
+        <p>Hello <button  mat-button color="primary" routerLink="/profile">{{user.preferred_name}}</button></p>
+    }
+
+    <button  mat-button color="primary" routerLink="/book-tutor">Book Tutor</button>
+    <hr>
+    <div class="filter-section">
+        <mat-form-field>
+            <mat-label>Select Grade</mat-label>
+            <mat-select [(value)]="selectedGrade" (valueChange)="updateGrades()">
+              @for (grade of grades; track grade) {
+                <mat-option [value]="grade.value">{{grade.viewValue}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+    </div>
+
+    <div class="container">
+        @for(item of items; track item){
+            <!-- <mat-grid-tile > -->
+                <!-- <img src="https://www.svgrepo.com/show/231569/science-book.svg" alt="icon"> -->
+                <!-- <br> -->
+                <!-- <button mat-button color="primary" >{{item.subject_id}} </button> -->
+            <!-- </mat-grid-tile> -->
+
+            <!-- TODO: Update to be more dynamic -->
+            <div class="card" [hidden]="selectedGrade !== '12' && item.subject_id !== 'Mathematics'">
+                <div class="grade">Grade {{item.grade}}</div>
+                <div class="subject">{{item.subject_id}}</div>
+                <button routerLink="/dashboard/{{item.subject_id}}/{{selectedGrade}}">View Details</button>
+            </div>
+        }
+    </div>
+</section>

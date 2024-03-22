@@ -1,0 +1,77 @@
+
+<mat-toolbar>
+    <span>Questions Editor</span>
+    <span class="example-spacer"></span>
+    <div>
+        <button mat-button (click)="refreshQuestions()"><mat-icon>refresh</mat-icon> Refresh Questions</button>
+    </div>
+    <mat-form-field>
+        <mat-label>View</mat-label>
+        <mat-select #view (valueChange)="changeVisibility(view.value)" multiple [value]="selectedView">
+            @for (choice of ['Editor', 'PDF', 'Paper']; track choice) {
+                <mat-option [value]="choice">{{choice}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Select Question</mat-label>
+        <mat-select #jumper (valueChange)="scrollToElement(jumper.value)">
+            @for (question of questions; track question) {
+                <mat-option [value]="question.id"><a (click)="scrollToElement(question.id)" >Q{{question.question_no}} - {{question.label}}</a></mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</mat-toolbar>
+
+<div class="wrap">
+    <div name='editor' class="box" [hidden]="editorViewHidden">
+
+        @if (questions.length > 0) {
+            <!-- <div class="container" fxLayout="column" fxLayoutGap="20px"> -->
+                @for (question of questions; track question) {
+                    <!-- <button mat-button (click)="test(question)">Test global</button> -->
+                    <app-latex-editor
+                    (duplicateQuestionEvent)="receiveDuplicateQuestionEvent($event)"
+                    (deleteQuestionEvent)="receiveDeleteQuestionEvent($event)"
+                    (saveQuestionEvent)="receiveSaveQuestionEvent($event)"
+                    [question]="question"
+                    ></app-latex-editor>
+                    <br>
+
+                }    
+            <!-- </div>   -->
+        }
+        @else {
+            <mat-spinner class="center"></mat-spinner>
+        }
+    </div>
+    <div name="pdf-view" class="box" [hidden]="pdfViewHidden">
+        <div>
+            <button mat-button (click)="refreshPDFDocuments()"><mat-icon>refresh</mat-icon>Refresh Documents</button>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Select PDF</mat-label>
+            <mat-select [(value)]="selectedPDFDocument">
+                @for (pdfDocument of pdfDocuments; track pdfDocuments) {
+                    <mat-option [value]="pdfDocument">{{pdfDocument.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+        
+        @if (selectedPDFDocument) {
+            <!-- Add download button -->
+            <button mat-raised-button color="primary" (click)="downloadPdf()">Download PDF</button>
+            <br>
+            <app-pdfviewer [pdfSource]="selectedPDFDocument.url" [title]="selectedPDFDocument.name"></app-pdfviewer>
+        }
+
+    </div>
+
+    <div name="paper-view" class="box" [hidden]="paperViewHidden">
+        <app-paper-view [questions]="questions" [updateQuestionEvent]="updateQuestionEvent.asObservable()"></app-paper-view>
+    </div>
+  </div>
